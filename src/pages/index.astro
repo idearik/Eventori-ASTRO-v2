@@ -11,100 +11,6 @@ const pastEvents = events.filter(event => new Date(event.date) < now);
 <head>
   <title>Eventori</title>
   <link rel="stylesheet" href="/styles/global.css">
-  <style>
-	/* Global styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #121212;
-  color: #e0e0e0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h1 {
-  margin: 20px 0;
-  font-size: 2rem;
-  color: #fff;
-  background-color: #1d1d1d;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-
-.button-container {
-  display: flex;
-  gap: 10px;
-  margin: 20px;
-}
-
-button {
-  background-color: #1a73e8;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-button:hover {
-  background-color: #1358a8;
-  transform: scale(1.05);
-}
-
-button:active {
-  transform: scale(1);
-}
-
-#events-container {
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
-}
-
-.event-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.event-card {
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #1d1d1d;
-  color: #e0e0e0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.3s, transform 0.3s;
-  text-decoration: none;
-  display: block;
-}
-
-.event-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  transform: translateY(-5px);
-}
-
-.past-event {
-  filter: grayscale(100%);
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .button-container {
-    flex-direction: column;
-  }
-
-  button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
-
-  </style>
 </head>
 <body>
   <h1>Eventori</h1>
@@ -147,15 +53,22 @@ button:active {
   </div>
   
   <script>
-    document.getElementById('upcoming-btn').addEventListener('click', () => {
-      document.getElementById('upcoming-events').style.display = 'block';
-      document.getElementById('past-events').style.display = 'none';
-    });
+    const upcomingBtn = document.getElementById('upcoming-btn');
+    const pastBtn = document.getElementById('past-btn');
+    const upcomingEvents = document.getElementById('upcoming-events');
+    const pastEvents = document.getElementById('past-events');
 
-    document.getElementById('past-btn').addEventListener('click', () => {
-      document.getElementById('upcoming-events').style.display = 'none';
-      document.getElementById('past-events').style.display = 'block';
-    });
+    if (upcomingBtn && pastBtn && upcomingEvents && pastEvents) {
+      upcomingBtn.addEventListener('click', () => {
+        upcomingEvents.style.display = 'block';
+        pastEvents.style.display = 'none';
+      });
+
+      pastBtn.addEventListener('click', () => {
+        upcomingEvents.style.display = 'none';
+        pastEvents.style.display = 'block';
+      });
+    }
   </script>
 </body>
 </html>
