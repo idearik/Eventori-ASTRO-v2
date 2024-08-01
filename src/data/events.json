@@ -1,0 +1,21 @@
+[
+    {
+      "name": "Music Festival",
+      "date": "2024-08-15",
+      "endDate": "2024-08-17",
+      "location": "Bali",
+      "status": "Paid",
+      "description": "A wonderful music festival with various bands.",
+      "url": "https://example.com/music-festival"
+    },
+    {
+      "name": "Art Exhibition",
+      "date": "2024-07-01",
+      "endDate": "2024-07-15",
+      "location": "Ubud",
+      "status": "Free",
+      "description": "An exhibition showcasing local art.",
+      "url": "https://example.com/art-exhibition"
+    }
+  ]
+  

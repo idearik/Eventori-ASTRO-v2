@@ -1,0 +1,40 @@
+---
+const { name, date, endDate, location, status, description, url, isPast } = Astro.props;
+const cardClass = isPast ? 'event-card past-event' : 'event-card';
+---
+
+<a href={url} class={cardClass} target="_blank" rel="noopener noreferrer">
+  <h3>{name} <span>{status === 'Free' ? '🎉' : '💵'}</span></h3>
+  <p>📅 {date} {endDate ? ` - ${endDate}` : ''}</p>
+  <p>📍 {location}</p>
+  <p>{description}</p>
+</a>
+
+<style>
+  .event-card {
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #1d1d1d;
+    color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-decoration: none;
+    display: block;
+  }
+  .event-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+  }
+  .past-event {
+    filter: grayscale(100%);
+  }
+  .event-info {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  .event-info span {
+    margin-left: 10px;
+  }
+</style>

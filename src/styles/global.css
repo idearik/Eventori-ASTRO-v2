@@ -1,0 +1,117 @@
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    margin: 20px 0;
+    font-size: 2rem;
+    color: #fff;
+    background-color: #1d1d1d;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+  }
+  
+  button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    background-color: #1358a8;
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    transform: scale(1);
+  }
+  
+  #events-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+  
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .event-card {
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #1d1d1d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-decoration: none;
+    color: #e0e0e0;
+    display: block;
+  }
+  
+  .event-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+  }
+  
+  .event-card h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .event-card h3 span {
+    margin-left: 10px;
+  }
+  
+  .event-card p {
+    margin: 5px 0;
+  }
+  
+  .event-card .event-info {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  .event-card .event-info span {
+    margin-left: 10px;
+  }
+  
+  .past-event {
+    filter: grayscale(100%);
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .button-container {
+      flex-direction: column;
+    }
+  
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
