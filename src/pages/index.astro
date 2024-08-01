@@ -1,6 +1,8 @@
 ---
 import EventCard from '../components/EventCard.astro';
-import events from '../data/events.json';
+import { fetchEvents } from '../lib/fetchEvents';
+
+const events = await fetchEvents();
 
 const now = new Date();
 const upcomingEvents = events.filter(event => new Date(event.date) >= now);
@@ -21,35 +23,41 @@ const pastEvents = events.filter(event => new Date(event.date) < now);
   </div>
   
   <div id="events-container">
-    <div id="upcoming-events" class="event-list">
-      {upcomingEvents.map(event => (
-        <EventCard
-          name={event.name}
-          date={event.date}
-          endDate={event.endDate}
-          location={event.location}
-          status={event.status}
-          description={event.description}
-          url={event.url}
-          isPast={false}
-        />
-      ))}
-    </div>
-    
-    <div id="past-events" class="event-list" style="display: none;">
-      {pastEvents.map(event => (
-        <EventCard
-          name={event.name}
-          date={event.date}
-          endDate={event.endDate}
-          location={event.location}
-          status={event.status}
-          description={event.description}
-          url={event.url}
-          isPast={true}
-        />
-      ))}
-    </div>
+    {events.length === 0 ? (
+      <p>No events found.</p>
+    ) : (
+      <>
+        <div id="upcoming-events" class="event-list">
+          {upcomingEvents.map(event => (
+            <EventCard
+              name={event.name}
+              date={event.date}
+              endDate={event.endDate}
+              location={event.location}
+              status={event.status}
+              description={event.description}
+              url={event.url}
+              isPast={false}
+            />
+          ))}
+        </div>
+        
+        <div id="past-events" class="event-list" style="display: none;">
+          {pastEvents.map(event => (
+            <EventCard
+              name={event.name}
+              date={event.date}
+              endDate={event.endDate}
+              location={event.location}
+              status={event.status}
+              description={event.description}
+              url={event.url}
+              isPast={true}
+            />
+          ))}
+        </div>
+      </>
+    )}
   </div>
   
   <script>
