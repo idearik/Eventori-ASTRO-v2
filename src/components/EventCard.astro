@@ -1,11 +1,29 @@
 ---
 const { name, date, endDate, location, status, description, url, isPast } = Astro.props;
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+  return date.toLocaleDateString(undefined, options);
+}
+
+function formatDateRange(startDate: string, endDate: string): string {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const startOptions: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
+  const endOptions: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+  const startFormatted = start.toLocaleDateString(undefined, startOptions);
+  const endFormatted = end.toLocaleDateString(undefined, endOptions);
+  return `${startFormatted} - ${endFormatted}`;
+}
+
+const displayDate = endDate ? formatDateRange(date, endDate) : formatDate(date);
 const cardClass = isPast ? 'event-card past-event past' : 'event-card upcoming';
 ---
 
 <a href={url} class={cardClass} target="_blank" rel="noopener noreferrer">
   <h3>{name} <span>{status === 'Free' ? '🎉' : '💵'}</span></h3>
-  <p>{date} {endDate ? ` - ${endDate}` : ''}</p>
+  <p>{displayDate}</p>
   <p>📍 {location}</p>
   <p>{description}</p>
 </a>
