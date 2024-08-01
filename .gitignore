@@ -24,4 +24,3 @@ pnpm-debug.log*
 .idea/
 
 google-sheets-key.json
-src/lib/fetchEvents.js
