@@ -2,15 +2,15 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["node"]
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src", "types.d.ts"]
 }

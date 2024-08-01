@@ -5,8 +5,8 @@ import { fetchEvents } from '../lib/fetchEvents';
 const events = await fetchEvents();
 
 const now = new Date();
-const upcomingEvents = events.filter(event => new Date(event.date) >= now);
-const pastEvents = events.filter(event => new Date(event.date) < now);
+const upcomingEvents = events.filter((event: { date: string | number | Date; }) => new Date(event.date) >= now);
+const pastEvents = events.filter((event: { date: string | number | Date; }) => new Date(event.date) < now);
 ---
 
 <html>
@@ -28,7 +28,7 @@ const pastEvents = events.filter(event => new Date(event.date) < now);
     ) : (
       <>
         <div id="upcoming-events" class="event-list">
-          {upcomingEvents.map(event => (
+          {upcomingEvents.map((event: { name: any; date: any; endDate: any; location: any; status: any; description: any; url: any; }) => (
             <EventCard
               name={event.name}
               date={event.date}
@@ -43,7 +43,7 @@ const pastEvents = events.filter(event => new Date(event.date) < now);
         </div>
         
         <div id="past-events" class="event-list" style="display: none;">
-          {pastEvents.map(event => (
+          {pastEvents.map((event: { name: any; date: any; endDate: any; location: any; status: any; description: any; url: any; }) => (
             <EventCard
               name={event.name}
               date={event.date}
