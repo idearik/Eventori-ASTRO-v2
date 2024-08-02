@@ -127,33 +127,85 @@ button:active {
   filter: grayscale(100%);
 }
 
+/* Footer styles */
+footer {
+  background-color: #1d1d1d;
+  color: #e0e0e0;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+footer a {
+  color: #28a745; /* Match the green color used for buttons */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   body {
     width: 100%;
-    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #121212;
+    font-size: 16px; /* Ensure legible font sizes */
   }
 
   .button-container {
     flex-direction: row;
     justify-content: center;
+    margin: 20px;
   }
 
   .search-container {
-    width: 100%;
+    width: calc(100% - 40px); /* Full width minus side padding */
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
   }
 
   #search-bar {
     width: 100%;
+    padding: 10px;
+    font-size: 16px; /* Ensure the font size is readable */
+    border: 2px solid #28a745; /* Green border */
+    border-radius: 5px;
+    background-color: #1d1d1d; /* Background color for better contrast */
+    color: #e0e0e0; /* Text color for readability */
   }
 
   #events-container {
-    padding: 0 10px;
-    align-items: stretch;
+    width: calc(100% - 40px); /* Full width minus side padding */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
   }
 
   .event-card {
     padding: 10px;
     width: 100%;
+    max-width: 100%; /* Ensure it fills the container */
+    box-sizing: border-box;
   }
 }
