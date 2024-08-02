@@ -8,6 +8,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width calculations */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 h1 {
@@ -61,7 +64,7 @@ button:active {
 
 .btn-upcoming {
   font-weight: 900;
-  color:#080808;
+  color: #080808;
   background-color: #4DA0FF; /* Updated blue for higher contrast */
 }
 
@@ -71,7 +74,7 @@ button:active {
 
 .btn-past {
   font-weight: 900;
-  color:#080808;
+  color: #080808;
   background-color: #EF6CA9; /* Updated pink for higher contrast */
 }
 
@@ -143,7 +146,7 @@ footer p {
 }
 
 footer a {
-  color: #28a745; /* Match the green color used for buttons */
+  color: #35CF59; /* Match the green color used for buttons */
   text-decoration: none;
 }
 
@@ -154,14 +157,14 @@ footer a:hover {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   body {
-    width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 10px; /* Add padding on the sides */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #121212;
     font-size: 16px; /* Ensure legible font sizes */
+    box-sizing: border-box;
   }
 
   .button-container {
@@ -171,8 +174,8 @@ footer a:hover {
   }
 
   .search-container {
-    width: calc(100% - 40px); /* Full width minus side padding */
-    padding: 0 20px;
+    width: calc(100% - 20px); /* Full width minus side padding */
+    padding: 0 10px;
     box-sizing: border-box;
     margin-bottom: 20px;
   }
@@ -188,7 +191,7 @@ footer a:hover {
   }
 
   #events-container {
-    width: calc(100% - 40px); /* Full width minus side padding */
+    width: calc(100% - 20px); /* Full width minus side padding */
     padding: 0;
     display: flex;
     flex-direction: column;
