@@ -25,16 +25,19 @@ const pastEvents = events
     <button id="upcoming-btn" class="btn-upcoming">Upcoming Events</button>
     <button id="past-btn" class="btn-past">Past Events</button>
   </div>
+
+  <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Search Event">
+  </div>
   
   <div id="events-container">
     {events.length === 0 ? (
       <p>No events found.</p>
     ) : (
       <>
-        <div id="upcoming-events" class="event-list" style="justify-content: center;">
+        <div id="upcoming-events" class="event-list">
           {upcomingEvents.map((event: { name: any; date: any; endDate: any; location: any; status: any; description: any; url: any; }) => (
             <EventCard
-              key={event.name}
               name={event.name}
               date={event.date}
               endDate={event.endDate}
@@ -47,10 +50,9 @@ const pastEvents = events
           ))}
         </div>
         
-        <div id="past-events" class="event-list" style="display: none; justify-content: center;">
+        <div id="past-events" class="event-list" style="display: none;">
           {pastEvents.map((event: { name: any; date: any; endDate: any; location: any; status: any; description: any; url: any; }) => (
             <EventCard
-              key={event.name}
               name={event.name}
               date={event.date}
               endDate={event.endDate}
@@ -72,16 +74,29 @@ const pastEvents = events
       const pastBtn = document.getElementById('past-btn');
       const upcomingEvents = document.getElementById('upcoming-events');
       const pastEvents = document.getElementById('past-events');
-  
-      if (upcomingBtn && pastBtn && upcomingEvents && pastEvents) {
+      const eventsContainer = document.getElementById('events-container');
+      const searchBar = document.getElementById('search-bar');
+
+      if (upcomingBtn && pastBtn && upcomingEvents && pastEvents && eventsContainer && searchBar) {
         upcomingBtn.addEventListener('click', () => {
           upcomingEvents.style.display = 'flex';
           pastEvents.style.display = 'none';
         });
-  
+
         pastBtn.addEventListener('click', () => {
           upcomingEvents.style.display = 'none';
           pastEvents.style.display = 'flex';
+        });
+
+        searchBar.addEventListener('input', () => {
+          const query = (searchBar as HTMLInputElement).value.toLowerCase();
+          const allEventCards = eventsContainer.querySelectorAll('.event-card');
+
+          allEventCards.forEach((value) => {
+            const card = value as HTMLElement;
+            const cardText = card.textContent?.toLowerCase() || '';
+            card.style.display = cardText.includes(query) ? 'block' : 'none';
+          });
         });
       }
     });

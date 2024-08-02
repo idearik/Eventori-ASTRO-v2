@@ -26,6 +26,21 @@ h1 {
   justify-content: center;
 }
 
+.search-container {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #28a745;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
 button {
   color: white;
   border: none;
@@ -71,10 +86,10 @@ button:active {
 
 .event-list {
   display: flex;
-  flex-direction: column;
   gap: 15px;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  align-items: center; /* Center the event cards */
 }
 
 .event-card {
@@ -109,22 +124,27 @@ button:active {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+  body {
+    width: 100%;
+    align-items: stretch;
+  }
+
   .button-container {
     flex-direction: row;
     justify-content: center;
+  }
+
+  .search-container {
     width: 100%;
   }
 
-  button {
-    width: calc(50% - 5px);
+  #search-bar {
+    width: 100%;
   }
 
   #events-container {
     padding: 0 10px;
-  }
-
-  .event-list {
-    align-items: center;
+    align-items: stretch;
   }
 
   .event-card {

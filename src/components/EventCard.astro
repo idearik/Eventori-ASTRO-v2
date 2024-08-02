@@ -22,7 +22,7 @@ const cardClass = isPast ? 'event-card past-event past' : 'event-card upcoming';
 ---
 
 <a href={url} class={cardClass} target="_blank" rel="noopener noreferrer">
-  <h3>{name} <span>{status === 'Free' ? '(FREE 🎉)' : '(PAID 💵)'}</span></h3>
+  <h2 class="event-name">{name} <span>{status === 'Free' ? '(FREE 🎉)' : '(PAID 💵)'}</span></h2>
   <p>{displayDate}</p>
   <p>📍 {location}</p>
   <p>{description}</p>
