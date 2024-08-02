@@ -60,7 +60,9 @@ button:active {
 }
 
 .btn-upcoming {
-  background-color: #007bff; /* Updated blue for higher contrast */
+  font-weight: 900;
+  color:#080808;
+  background-color: #4DA0FF; /* Updated blue for higher contrast */
 }
 
 .btn-upcoming:hover {
@@ -68,7 +70,9 @@ button:active {
 }
 
 .btn-past {
-  background-color: #e83e8c; /* Updated pink for higher contrast */
+  font-weight: 900;
+  color:#080808;
+  background-color: #EF6CA9; /* Updated pink for higher contrast */
 }
 
 .btn-past:hover {
