@@ -67,15 +67,14 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .event-list {
   display: flex;
-  gap: 18px;
-  align-items: center;
+  flex-direction: column;
+  gap: 15px;
   width: 100%;
-  flex-direction: column; /* Ensure events are stacked vertically */
+  align-items: center; /* Center the event cards */
 }
 
 .event-card {
@@ -104,20 +103,6 @@ button:active {
   border: 2px solid #dc3545; /* Red border for past events */
 }
 
-#upcoming-event.event-list{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#past-event.event-list{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .past-event {
   filter: grayscale(100%);
 }
@@ -127,6 +112,7 @@ button:active {
   .button-container {
     flex-direction: row;
     justify-content: center;
+    width: 100%;
   }
 
   button {
@@ -135,6 +121,10 @@ button:active {
 
   #events-container {
     padding: 0 10px;
+  }
+
+  .event-list {
+    align-items: center;
   }
 
   .event-card {

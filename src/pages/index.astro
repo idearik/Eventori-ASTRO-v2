@@ -5,8 +5,12 @@ import { fetchEvents } from '../lib/fetchEvents';
 const events = await fetchEvents();
 
 const now = new Date();
-const upcomingEvents = events.filter((event: { date: string | number | Date; }) => new Date(event.date) >= now);
-const pastEvents = events.filter((event: { date: string | number | Date; }) => new Date(event.date) < now);
+const upcomingEvents = events
+  .filter((event: { date: string | number | Date; }) => new Date(event.date) >= now)
+  .sort((a: { date: string | number | Date; }, b: { date: string | number | Date; }) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+const pastEvents = events
+  .filter((event: { date: string | number | Date; }) => new Date(event.date) < now);
 ---
 
 <html>
@@ -27,9 +31,10 @@ const pastEvents = events.filter((event: { date: string | number | Date; }) => n
       <p>No events found.</p>
     ) : (
       <>
-        <div id="upcoming-events" class="event-list">
+        <div id="upcoming-events" class="event-list" style="justify-content: center;">
           {upcomingEvents.map((event: { name: any; date: any; endDate: any; location: any; status: any; description: any; url: any; }) => (
             <EventCard
+              key={event.name}
               name={event.name}
               date={event.date}
               endDate={event.endDate}
@@ -42,9 +47,10 @@ const pastEvents = events.filter((event: { date: string | number | Date; }) => n
           ))}
         </div>
         
-        <div id="past-events" class="event-list" style="display: none;">
+        <div id="past-events" class="event-list" style="display: none; justify-content: center;">
           {pastEvents.map((event: { name: any; date: any; endDate: any; location: any; status: any; description: any; url: any; }) => (
             <EventCard
+              key={event.name}
               name={event.name}
               date={event.date}
               endDate={event.endDate}
@@ -61,30 +67,24 @@ const pastEvents = events.filter((event: { date: string | number | Date; }) => n
   </div>
   
   <script>
-    // Wait for the DOM to fully load before attaching event listeners
     document.addEventListener('DOMContentLoaded', () => {
       const upcomingBtn = document.getElementById('upcoming-btn');
       const pastBtn = document.getElementById('past-btn');
       const upcomingEvents = document.getElementById('upcoming-events');
       const pastEvents = document.getElementById('past-events');
-      const eventsContainer = document.getElementById('events-container');
   
-      if (upcomingBtn && pastBtn && upcomingEvents && pastEvents && eventsContainer) {
+      if (upcomingBtn && pastBtn && upcomingEvents && pastEvents) {
         upcomingBtn.addEventListener('click', () => {
-          upcomingEvents.style.display = 'block';
+          upcomingEvents.style.display = 'flex';
           pastEvents.style.display = 'none';
-          eventsContainer.style.justifyContent = 'center'; // Center the container
         });
   
         pastBtn.addEventListener('click', () => {
           upcomingEvents.style.display = 'none';
-          pastEvents.style.display = 'block';
-          eventsContainer.style.justifyContent = 'center'; // Center the container
+          pastEvents.style.display = 'flex';
         });
       }
     });
   </script>
-  
-  
 </body>
 </html>
