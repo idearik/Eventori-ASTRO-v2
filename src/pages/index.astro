@@ -65,18 +65,23 @@ const pastEvents = events.filter((event: { date: string | number | Date; }) => n
     const pastBtn = document.getElementById('past-btn');
     const upcomingEvents = document.getElementById('upcoming-events');
     const pastEvents = document.getElementById('past-events');
-
+  
     if (upcomingBtn && pastBtn && upcomingEvents && pastEvents) {
       upcomingBtn.addEventListener('click', () => {
         upcomingEvents.style.display = 'block';
         pastEvents.style.display = 'none';
+        // Center the container
+        document.getElementById('events-container').style.alignItems = 'center';
       });
-
+  
       pastBtn.addEventListener('click', () => {
         upcomingEvents.style.display = 'none';
         pastEvents.style.display = 'block';
+        // Center the container
+        document.getElementById('events-container').style.alignItems = 'center';
       });
     }
   </script>
+  
 </body>
 </html>

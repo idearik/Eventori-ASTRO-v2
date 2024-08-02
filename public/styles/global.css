@@ -23,6 +23,7 @@ h1 {
   display: flex;
   gap: 10px;
   margin: 20px;
+  justify-content: center;
 }
 
 button {
@@ -63,12 +64,18 @@ button:active {
   width: 100%;
   max-width: 1200px;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .event-list {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  gap: 18px;
+  align-items: center;
+  width: 100%;
+  flex-direction: column; /* Ensure events are stacked vertically */
 }
 
 .event-card {
@@ -80,6 +87,8 @@ button:active {
   transition: box-shadow 0.3s, transform 0.3s;
   text-decoration: none;
   display: block;
+  width: 100%;
+  max-width: 600px;
 }
 
 .event-card:hover {
@@ -95,6 +104,20 @@ button:active {
   border: 2px solid #dc3545; /* Red border for past events */
 }
 
+#upcoming-event.event-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#past-event.event-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .past-event {
   filter: grayscale(100%);
 }
@@ -103,6 +126,7 @@ button:active {
 @media (max-width: 768px) {
   .button-container {
     flex-direction: row;
+    justify-content: center;
   }
 
   button {
@@ -115,5 +139,6 @@ button:active {
 
   .event-card {
     padding: 10px;
+    width: 100%;
   }
 }
