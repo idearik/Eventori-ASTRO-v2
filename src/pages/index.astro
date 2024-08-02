@@ -61,27 +61,30 @@ const pastEvents = events.filter((event: { date: string | number | Date; }) => n
   </div>
   
   <script>
-    const upcomingBtn = document.getElementById('upcoming-btn');
-    const pastBtn = document.getElementById('past-btn');
-    const upcomingEvents = document.getElementById('upcoming-events');
-    const pastEvents = document.getElementById('past-events');
+    // Wait for the DOM to fully load before attaching event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      const upcomingBtn = document.getElementById('upcoming-btn');
+      const pastBtn = document.getElementById('past-btn');
+      const upcomingEvents = document.getElementById('upcoming-events');
+      const pastEvents = document.getElementById('past-events');
+      const eventsContainer = document.getElementById('events-container');
   
-    if (upcomingBtn && pastBtn && upcomingEvents && pastEvents) {
-      upcomingBtn.addEventListener('click', () => {
-        upcomingEvents.style.display = 'block';
-        pastEvents.style.display = 'none';
-        // Center the container
-        document.getElementById('events-container').style.alignItems = 'center';
-      });
+      if (upcomingBtn && pastBtn && upcomingEvents && pastEvents && eventsContainer) {
+        upcomingBtn.addEventListener('click', () => {
+          upcomingEvents.style.display = 'block';
+          pastEvents.style.display = 'none';
+          eventsContainer.style.justifyContent = 'center'; // Center the container
+        });
   
-      pastBtn.addEventListener('click', () => {
-        upcomingEvents.style.display = 'none';
-        pastEvents.style.display = 'block';
-        // Center the container
-        document.getElementById('events-container').style.alignItems = 'center';
-      });
-    }
+        pastBtn.addEventListener('click', () => {
+          upcomingEvents.style.display = 'none';
+          pastEvents.style.display = 'block';
+          eventsContainer.style.justifyContent = 'center'; // Center the container
+        });
+      }
+    });
   </script>
+  
   
 </body>
 </html>
