@@ -16,6 +16,8 @@ const pastEvents = events
 <html>
 <head>
   <title>Eventori</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Eventori: Your go-to site for upcoming and past events in Bali.">
   <link rel="stylesheet" href="/styles/global.css">
 </head>
 <body>
@@ -25,9 +27,9 @@ const pastEvents = events
     <button id="upcoming-btn" class="btn-upcoming">Upcoming Events</button>
     <button id="past-btn" class="btn-past">Past Events</button>
   </div>
-
+  
   <div class="search-container">
-    <input type="text" id="search-bar" placeholder="Search Event">
+    <input id="search-bar" type="text" placeholder="Search Event">
   </div>
   
   <div id="events-container">
@@ -70,36 +72,40 @@ const pastEvents = events
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const upcomingBtn = document.getElementById('upcoming-btn');
-      const pastBtn = document.getElementById('past-btn');
-      const upcomingEvents = document.getElementById('upcoming-events');
-      const pastEvents = document.getElementById('past-events');
-      const eventsContainer = document.getElementById('events-container');
-      const searchBar = document.getElementById('search-bar');
-
-      if (upcomingBtn && pastBtn && upcomingEvents && pastEvents && eventsContainer && searchBar) {
+      const searchBar = document.getElementById('search-bar') as HTMLInputElement;
+      const upcomingBtn = document.getElementById('upcoming-btn') as HTMLButtonElement;
+      const pastBtn = document.getElementById('past-btn') as HTMLButtonElement;
+      const upcomingEvents = document.getElementById('upcoming-events') as HTMLElement;
+      const pastEvents = document.getElementById('past-events') as HTMLElement;
+      const eventsContainer = document.getElementById('events-container') as HTMLElement;
+    
+      if (searchBar && upcomingBtn && pastBtn && upcomingEvents && pastEvents && eventsContainer) {
         upcomingBtn.addEventListener('click', () => {
           upcomingEvents.style.display = 'flex';
           pastEvents.style.display = 'none';
         });
-
+    
         pastBtn.addEventListener('click', () => {
           upcomingEvents.style.display = 'none';
           pastEvents.style.display = 'flex';
         });
-
+  
         searchBar.addEventListener('input', () => {
-          const query = (searchBar as HTMLInputElement).value.toLowerCase();
-          const allEventCards = eventsContainer.querySelectorAll('.event-card');
-
-          allEventCards.forEach((value) => {
-            const card = value as HTMLElement;
-            const cardText = card.textContent?.toLowerCase() || '';
-            card.style.display = cardText.includes(query) ? 'block' : 'none';
+          const filter = searchBar.value.toLowerCase();
+          const cards = eventsContainer.querySelectorAll('.event-card');
+          
+          cards.forEach((card) => {
+            const element = card as HTMLElement;
+            const textContent = element.textContent || '';
+            if (textContent.toLowerCase().includes(filter)) {
+              element.style.display = '';
+            } else {
+              element.style.display = 'none';
+            }
           });
         });
       }
     });
-  </script>
+  </script>  
 </body>
 </html>
